@@ -1,0 +1,20 @@
+1. Minimum RTO for a single AZ outage: 1-2 mins.
+In this case RTO is the time to complete the switch to a different AZ. Minimum 60-120 seconds. Large transactions or a lengthy recovery process can increase failover time
+
+2. Minimum RTO for a single region outage: 60 mins
+00:00 - Problem happens (0 minutes)
+00:05 - An amount of time passes before an alert triggers (5 minutes)
+00:06 - Alert triggers on-all staff (1 minute)
+00:16 - On-call staff may need to get out of bed, get to computer, log in, log onto VPN (10 minutes)
+00:26 - On-call staff starts diagnosing issue (10 minutes)
+00:36 - Root cause is discovered (10 minutes)
+00:46 - Remediation started (10 minutes)
+00:56 - Remediation completed (10 minutes)
+
+Total time: 56 minutes
+
+3. Minimum RPO for a single AZ outage: 5 mins
+RPO for recovery with an RDS Single-AZ instance failure is typically 5 minutes (the interval required for copying transaction logs to Amazon S3), but it can vary.
+
+4. Minimum RPO for a single region outage:
+If we set up an RDS database with automatic backups enabled, the RPO will be based on how often data is backed up. If we set up a backup every 6 hours, the minimun RPO will be 6 hours.
